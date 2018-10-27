@@ -187,8 +187,7 @@
         var checkbox = jQuery('#review');
         var reviews_allowed_field = jQuery('#reviews_allowed');
         if (checkbox.is(':checked')) {
-            $('#assignment_review_topic_threshold_row').css({visibility : 'hidden'});
-            print("checked")
+            $('#assignment_review_topic_threshold_row').css({visibility : 'hidden', display: ""});
             reviews_allowed_field.removeAttr('hidden');
             jQuery('#assignment_form_assignment_num_reviews_allowed').val('<%=@assignment_form.assignment.num_reviews_allowed ||= 3%>');
 
@@ -196,7 +195,7 @@
         } else {
             //document.getElementById('assignment_review_topic_threshold_row').style.visibility = "visible";
             $('#assignment_review_topic_threshold_row').css({visibility : 'visible'});
-            print ("here")
+
                 reviews_allowed_field.attr('hidden', true);
                 jQuery('#assignment_form_assignment_num_reviews_allowed').val('-1');
 
