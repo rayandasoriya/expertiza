@@ -59,7 +59,7 @@
       <img src="/assets/info.png" title='You can select whether the particular submission needs to have maximum limit for review or not.'>
     </td>
   </tr>
-  <tr id="assignment_review_topic_threshold_row" style = "display:none" >
+  <tr id="assignment_review_topic_threshold_row" >
   <div id="reviews_allowed">
     <td>
       <%= label_tag('assignment_form[assignment][num_reviews_allowed]', ' Set Allowed Number of Reviews per reviewer') %>
@@ -187,11 +187,13 @@
         var checkbox = jQuery('#review');
         var reviews_allowed_field = jQuery('#reviews_allowed');
         if (checkbox.is(':checked')) {
+            document.getElementById('assignment_review_topic_threshold_row').style.display = "none";
             reviews_allowed_field.removeAttr('hidden');
             jQuery('#assignment_form_assignment_num_reviews_allowed').val('<%=@assignment_form.assignment.num_reviews_allowed ||= 3%>');
 
 
         } else {
+            document.getElementById('assignment_review_topic_threshold_row').style.display = "block";
                 reviews_allowed_field.attr('hidden', true);
                 jQuery('#assignment_form_assignment_num_reviews_allowed').val('-1');
 
