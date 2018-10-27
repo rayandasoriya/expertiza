@@ -43,13 +43,14 @@
   <tr>
     <td>
       <%= check_box_tag('review', 'true', true, {:onChange => 'hasReviewChanged()'}) %>
-      <%= label_tag('review', 'Has Max Review Limit?') %>&emsp;&emsp;
+      <%= label_tag('review', 'Has Max Review Limit?') %>
       <img src="/assets/info.png" title='You can select whether the particular submission needs to have maximum limit for review or not.'>
     </td>
 
   </tr>
+  <span id="reviews_allowed" <%= 'hidden' if @assignment_form.assignment.num_reviews_allowed.nil?%>
   <tr id="assignment_review_topic_threshold_row">
-    <span id="reviews_allowed" <%= 'hidden' if @assignment_form.assignment.num_reviews_allowed.nil?%>
+
     <td>
       <%= label_tag('assignment_form[assignment][num_reviews_allowed]', ' Set Allowed Number of Reviews per reviewer') %>
     </td>
@@ -63,8 +64,8 @@
       <%= text_field_tag('assignment_form[assignment][num_reviews_allowed]',  3, size: 1, class: "form-control width-70") %>
       </td>
     <%end%>
-    </span>
   </tr>
+  </span>
 
 
     <br/>
