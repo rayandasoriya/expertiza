@@ -1,7 +1,7 @@
 <!--The reason why add an empty form_tag here. (https://github.com/expertiza/expertiza/commit/4d1a9d50833aca4e8771afd851daa40455d4fc37)-->
 <%= form_tag controller: 'assignment', action: 'edit', assignment_id: @assignment_form.assignment.id do %>
 <% end %>
-<table cellspacing=0 border=0 class="table" style="width: 100%">
+<table cellspacing=0 border=0 class="table-hover table-borderless" style="width: 100%">
   <col width="200"/>
   <col width="100"/>
 
@@ -37,29 +37,36 @@
     </td>
     <td>
       <%= text_field_tag('assignment_form[assignment][max_reviews_per_submission]', @assignment_form.assignment.max_reviews_per_submission ||= 10, size: 2, class: "form-control width-70") %>
+      <img src="/assets/info.png" title='You can set the maximum number of reviews can be done for a particular submissions.'>
     </td>
   </tr>
   <tr>
     <td>
       <%= check_box_tag('review', 'true', true, {:onChange => 'hasReviewChanged()'}) %>
       <%= label_tag('review', 'Has Max Review Limit?') %>&emsp;&emsp;
+      <img src="/assets/info.png" title='You can select whether the particular submission needs to have maximum limit for review or not.'>
     </td>
-      <span id="reviews_allowed" <%= 'hidden' if @assignment_form.assignment.num_reviews_allowed.nil?%>
+
   </tr>
   <tr id="assignment_review_topic_threshold_row">
-        <td>
+    <span id="reviews_allowed" <%= 'hidden' if @assignment_form.assignment.num_reviews_allowed.nil?%>
+    <td>
       <%= label_tag('assignment_form[assignment][num_reviews_allowed]', ' Set Allowed Number of Reviews per reviewer') %>
-       </td>
-        <td>
-        <%if @assignment_form.assignment.num_reviews_allowed && @assignment_form.assignment.num_reviews_allowed >= 0 %>
+    </td>
+
+    <%if @assignment_form.assignment.num_reviews_allowed && @assignment_form.assignment.num_reviews_allowed >= 0 %>
+      <td>
       <%= text_field_tag('assignment_form[assignment][num_reviews_allowed]', @assignment_form.assignment.num_reviews_allowed, size: 1, class: "form-control width-70") %>
-        <%else%>
+      </td>
+    <%else%>
+      <td>
       <%= text_field_tag('assignment_form[assignment][num_reviews_allowed]',  3, size: 1, class: "form-control width-70") %>
-        <%end%>
-        </td>
+      </td>
+    <%end%>
+    </span>
   </tr>
 
-      </span>
+
     <br/>
    <tr>
     <td>
@@ -73,6 +80,7 @@
     <td>
       <%= check_box_tag('meta_review', 'true', true, {:onChange => 'hasMetaReviewChanged()'}) %>
       <%= label_tag('meta_review', 'Has Meta Review Limit?') %>&emsp;&emsp;
+      <img src="/assets/info.png" title='You can set if a particular submission can have a meta review or not.'>
     </td>
     </tr>
     <tr>
