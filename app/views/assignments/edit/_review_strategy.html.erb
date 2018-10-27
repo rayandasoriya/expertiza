@@ -201,7 +201,7 @@
     }
     function hasMetaReviewChanged() {
         var checkbox = jQuery('#meta_review');
-        var meta_reviews_allowed_field = jQuery('#meta_reviews_allowed');
+        var meta_reviews_allowed_field = document.getElementById('#meta_reviews_allowed');
         if (checkbox.is(':checked')) {
             //meta_reviews_allowed_field.removeAttr('hidden');
             meta_reviews_allowed_field.style.display = "block";
