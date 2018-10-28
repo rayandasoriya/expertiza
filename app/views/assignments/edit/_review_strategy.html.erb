@@ -113,6 +113,22 @@
       </span>
     </td>
   </tr>
+  <tr id="assignment_review_topic_threshold_row">
+    <td>
+      <span id="meta_reviews_allowed" <%= 'hidden' if @assignment_form.assignment.num_metareviews_allowed.nil?%>>
+      <%= label_tag('assignment_form[assignment][num_metareviews_allowed]', 'Set Required Number of MetaReviews per reviewer') %>
+        <%if @assignment_form.assignment.num_metareviews_allowed && @assignment_form.assignment.num_metareviews_allowed >= 0 %>
+       <td>
+      <%= text_field_tag('assignment_form[assignment][num_metareviews_allowed]', @assignment_form.assignment.num_metareviews_allowed ||= 3, size: 1, class: "form-control width-70") %>
+       </td>
+    <%else%>
+      <td>
+      <%= text_field_tag('assignment_form[assignment][num_metareviews_allowed]',  3, size: 1, class: "form-control width-70") %>
+      </td>
+    <%end%>
+      </span>
+    </td>
+  </tr>
 <!--    <span id="meta_reviews_allowed" <%#= 'hidden' if @assignment_form.assignment.num_reviews_allowed.nil?%> >-->
 <!--      <tr>-->
 <!--        <td>-->
