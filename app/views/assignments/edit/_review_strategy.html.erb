@@ -64,29 +64,18 @@
     <td>
       <span id="reviews_allowed" <%= 'hidden' if @assignment_form.assignment.num_reviews_allowed.nil?%>
       <%= label_tag('assignment_form[assignment][num_reviews_allowed]', ' Set Allowed Number of Reviews per reviewer') %>
-    </td>
-    <td>
       <%if @assignment_form.assignment.num_reviews_allowed && @assignment_form.assignment.num_reviews_allowed >= 0 %>
         <%= text_field_tag('assignment_form[assignment][num_reviews_allowed]', @assignment_form.assignment.num_reviews_allowed, size: 1, class: "form-control width-70") %>
       <%else%>
         <%= text_field_tag('assignment_form[assignment][num_reviews_allowed]',  3, size: 1, class: "form-control width-70") %>
       <%end%>
+      <br/>
+      <%= label_tag('assignment_form[assignment][num_reviews_required]', 'Set Required Number of Reviews per reviewer') %>
+      <%= text_field_tag('assignment_form[assignment][num_reviews_required]', @assignment_form.assignment.num_reviews_required ||= @assignment_form.assignment.num_reviews, size: 1, class: "form-control width-70") %>
       </span>
     </td>
   </tr>
-
-
-   <tr>
-    <td>
-      <%= label_tag('assignment_form[assignment][num_reviews_required]', 'Set Required Number of Reviews per reviewer') %>
-    </td>
-    <td>
-      <%= text_field_tag('assignment_form[assignment][num_reviews_required]', @assignment_form.assignment.num_reviews_required ||= @assignment_form.assignment.num_reviews, size: 1, class: "form-control width-70") %>
-    </td>
-     <td>
-     </td>
-    </tr>
-    <tr>
+  <tr>
     <td>
       <%= check_box_tag('meta_review', 'true', true, {:onChange => 'hasMetaReviewChanged()'}) %>
       <%= label_tag('meta_review', 'Has Meta Review Limit?') %>&emsp;&emsp;
